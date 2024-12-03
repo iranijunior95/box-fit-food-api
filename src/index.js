@@ -1,13 +1,12 @@
 import express from 'express';
 import 'dotenv/config';
+import router from './routes/router.js';
 
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('ola mundo');
-});
+app.use(express.json());
+app.use(router);
 
-app.listen(process.env.PORT, () => {
-    console.log(`Servidor rodando na porta ${process.env.PORT}!`);
-});
+export default app;
+
 
