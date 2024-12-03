@@ -1,0 +1,18 @@
+{
+  "name": "box-fit-food-api",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "API para o sistema da lanchonete Box Fit Food",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  }
+}
