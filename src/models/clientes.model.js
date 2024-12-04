@@ -1,6 +1,5 @@
 import connection from '../config/connection.db.js';
 
-//A função GetAll vai buscar apenas os clientes ativos (status: on)
 async function getAll() {
     try {
         const clientes = await connection.execute('SELECT * FROM cliente WHERE status_cliente = "on"');
