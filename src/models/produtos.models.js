@@ -12,6 +12,18 @@ async function getAll() {
     }
 }
 
+async function getById(id) {
+    try {
+        const produto = await connection.execute('SELECT * FROM produto WHERE id_produto = ? AND status_produto = "on"', [id]);
+
+        return produto[0];
+    } catch (error) {
+        console.log(`Error Get By Id Produto: ${error}`);
+
+        return false;
+    }
+}
+
 async function create({descricao, valor, quantidade, movimenta_estoque}) {
     try {
         const query = 'INSERT INTO produto(descricao, valor, quantidade, movimenta_estoque, status_produto) VALUES(?, ?, ?, ?, ?)';
@@ -52,6 +64,7 @@ async function deletar(id) {
 
 export default {
     getAll,
+    getById,
     create,
     update,
     deletar

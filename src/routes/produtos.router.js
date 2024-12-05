@@ -11,6 +11,13 @@ router.get('/produtos', async (req, res) => {
     return produtos.status ? res.status(200).json(produtos) : res.status(400).json(produtos);
 });
 
+router.get('/produtos/:id', async (req, res) => {
+    const id = req.params.id;
+    const produto = await produtosControllers.getById(id);
+
+    return produto.status ? res.status(200).json(produto) : res.status(400).json(produto);
+});
+
 router.post('/produtos', produtosMiddleware, async (req, res) => {
     const createdProduto = await produtosControllers.create(req.body);
 

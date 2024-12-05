@@ -6,6 +6,12 @@ async function getAll() {
     return produtos ? { status: true, dados: produtos } : { status: false, dados: [] };
 }
 
+async function getById(id) {
+    const produto = await produtosModel.getById(id);
+
+    return produto ? { status: true, dados: produto } : { status:false, dados: [] };
+}
+
 async function create(produto) {
     const dados = padronizarSchemaDeDadosProdutos(produto);
     const createdProduto = await produtosModel.create(dados);
@@ -60,6 +66,7 @@ function padronizarSchemaDeDadosProdutos({descricao, valor, quantidade, moviment
 
 export default {
     getAll,
+    getById,
     create,
     update,
     deletar
