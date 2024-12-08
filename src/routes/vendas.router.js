@@ -12,7 +12,9 @@ router.get('/vendas', async (req, res) => {
 });
 
 router.post('/vendas', vendasMiddleware, async (req, res) => {
-    return res.status(200).json({ mensagem: 'ok' });
+    const createdVenda = await vendasControllers.create(req.body);
+
+    return createdVenda.status ? res.status(200).json(createdVenda) : res.status(400).json(createdVenda);
 });
 
 export default router;
